@@ -1,0 +1,18 @@
+{
+  "input": {
+    "ciudad": "042"
+  },
+  "spec": {
+    "ciudad": "CIUDAD",
+    "_homologaciones" : {
+      "CIUDAD":
+        {
+          "042": "MEDELLIN"
+        }
+
+    }
+  },
+  "expected": {
+    "ciudad": "MEDELLIN"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "input": {
+    "asegurado": {
+      "ciudad": "042",
+      "tipo_documento": "C"
+    }
+  },
+  "spec": {
+    "asegurado": {
+      "ciudad": "CIUDAD",
+      "tipo_documento": "TIPODOCUMENTO"
+    },
+    "_homologaciones": {
+      "CIUDAD": {
+        "042": "MEDELLIN"
+      },
+      "TIPODOCUMENTO": {
+        "C": "cedula"
+      }
+    }
+  },
+  "expected": {
+    "asegurado": {
+      "ciudad": "MEDELLIN",
+      "tipo_documento": "cedula"
+    }
+  }
+}

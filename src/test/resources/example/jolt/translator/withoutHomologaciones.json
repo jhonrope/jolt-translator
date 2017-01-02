@@ -1,0 +1,11 @@
+{
+  "input": {
+    "ciudad": "042"
+  },
+  "spec": {
+    "ciudad": "CIUDAD"
+  },
+  "expected": {
+    "ciudad": "MEDELLIN"
+  }
+}

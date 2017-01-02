@@ -1,0 +1,41 @@
+{
+  "input": {
+    "asegurado": {
+      "ciudad": "042",
+      "tipo_documentos": [
+        "C",
+        "TI",
+        "CE",
+        "RC"
+      ]
+    }
+  },
+  "spec": {
+    "asegurado": {
+      "ciudad": "CIUDAD",
+      "tipo_documentos": "TIPODOCUMENTO"
+    },
+    "_homologaciones": {
+      "CIUDAD": {
+        "042": "MEDELLIN"
+      },
+      "TIPODOCUMENTO": {
+        "C": "cedula",
+        "TI": "tarjeta.identidad",
+        "CE": "cedula.extranjeria",
+        "RC": "registro.civil"
+      }
+    }
+  },
+  "expected": {
+    "asegurado": {
+      "ciudad": "MEDELLIN",
+      "tipo_documentos": [
+        "cedula",
+        "tarjeta.identidad",
+        "cedula.extranjeria",
+        "registro.civil"
+      ]
+    }
+  }
+}

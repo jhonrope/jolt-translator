@@ -1,0 +1,9 @@
+[
+  {
+    "operation": "jolt.custom.Translator",
+    "spec": {
+      "ciudad": "CIUDAD",
+      "_homologaciones": {}
+    }
+  }
+]
