@@ -1,8 +1,7 @@
-package example.jolt
+package jolt.translator
 
 import com.bazaarvoice.jolt.JsonUtils
 import com.bazaarvoice.jolt.exception.TransformException
-import jolt.custom.TranslatorImpl
 import org.scalatest.{FlatSpec, Matchers}
 
 
@@ -36,7 +35,7 @@ class TranslatorTest extends FlatSpec with Matchers {
 
   def runTranslateTest(testCaseName: String) = {
 
-    val testPath = "/example/jolt/translator/" + testCaseName
+    val testPath = "/jolt/translator/" + testCaseName
     val testUnit: java.util.Map[String, Object] = JsonUtils.classpathToMap(testPath + ".json")
 
     val input = testUnit.get("input")

@@ -1,4 +1,4 @@
-package jolt.custom;
+package jolt.translator;
 
 import java.util.Map;
 

@@ -1,9 +1,9 @@
-package jolt.custom;
+package jolt.translator;
 
 import com.bazaarvoice.jolt.exception.SpecException;
+import jolt.Translator;
 
 import javax.inject.Inject;
-import java.util.HashMap;
 import java.util.Map;
 
 
@@ -17,7 +17,6 @@ public class TranslatorImpl extends Translator {
     @Inject
     public TranslatorImpl(Object spec) {
         super(spec);
-        //translations = obtenerHomologaciones("a", "a");
     }
 
     @Override

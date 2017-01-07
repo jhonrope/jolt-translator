@@ -1,10 +1,11 @@
-package jolt.custom;
+package jolt;
 
 import com.bazaarvoice.jolt.SpecDriven;
 import com.bazaarvoice.jolt.Transform;
 import com.bazaarvoice.jolt.exception.SpecException;
 import com.bazaarvoice.jolt.exception.TransformException;
-import jolt.custom.translator.Key;
+import jolt.translator.Homologador;
+import jolt.translator.Key;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
