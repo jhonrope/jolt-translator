@@ -126,7 +126,7 @@ public abstract class Key {
      *  the defaultee wasn't null, it was null and we created it, OR there was
      *  a mismatch between the Defaultr Spec and the input, and we didn't recurse.
      */
-    public void applyChildren( Object defaultee, Map<String, Map<String, String>> homologaciones ) {
+    public void applyChildren( Object defaultee, Map<String, Map<String, String>> translations ) {
 
         if ( defaultee == null ) {
             throw new TransformException( "Defaultee should never be null when " +
@@ -152,7 +152,7 @@ public abstract class Key {
         Collections.sort( sortedChildren, keyComparator );
 
         for ( Key childKey : sortedChildren ) {
-            childKey.applyChild( defaultee, homologaciones);
+            childKey.applyChild( defaultee, translations);
         }
     }
 
@@ -163,7 +163,7 @@ public abstract class Key {
      *
      * If this Key is a WildCard key, this may apply to many entries in the container.
      */
-    protected abstract void applyChild( Object container, Map<String, Map<String, String>> homologaciones );
+    protected abstract void applyChild( Object container, Map<String, Map<String, String>> translations );
 
     public int getOrCount() {
        return orCount;

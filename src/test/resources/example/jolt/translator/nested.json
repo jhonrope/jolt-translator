@@ -9,14 +9,14 @@
     "asegurado": {
       "ciudad": "CIUDAD",
       "tipo_documento": "TIPODOCUMENTO"
+    }
+  },
+  "translations": {
+    "CIUDAD": {
+      "042": "MEDELLIN"
     },
-    "_homologaciones": {
-      "CIUDAD": {
-        "042": "MEDELLIN"
-      },
-      "TIPODOCUMENTO": {
-        "C": "cedula"
-      }
+    "TIPODOCUMENTO": {
+      "C": "cedula"
     }
   },
   "expected": {

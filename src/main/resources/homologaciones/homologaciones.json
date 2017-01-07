@@ -1,0 +1,11 @@
+{
+  "CIUDAD": {
+    "042": "MEDELLIN"
+  },
+  "TIPODOCUMENTO": {
+    "C": "cedula",
+    "TI": "tarjeta.identidad",
+    "CE": "cedula.extranjeria",
+    "RC": "registro.civil"
+  }
+}

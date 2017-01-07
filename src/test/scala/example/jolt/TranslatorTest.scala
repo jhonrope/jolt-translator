@@ -2,24 +2,19 @@ package example.jolt
 
 import com.bazaarvoice.jolt.JsonUtils
 import com.bazaarvoice.jolt.exception.TransformException
-import jolt.custom.Translator
+import jolt.custom.TranslatorImpl
 import org.scalatest.{FlatSpec, Matchers}
 
 
 class TranslatorTest extends FlatSpec with Matchers {
 
-  "Translator" should "separar el mapa de homologaciones del spec" in {
-    runTranslateTest("removeHomologaciones")
-  }
-
-  it should "devolver una exception si no se encuentran un mapa de homologaciones" in {
-
+  "Translator" should "devolver una exception si no se encuentran un mapa de translations" in {
     intercept[TransformException] {
       runTranslateTest("withoutHomologaciones")
     }
   }
 
-  it should "cargar las homologaciones enviadas en el spec" in {
+  it should "cargar las translations enviadas en el spec" in {
     runTranslateTest("simple")
   }
 
@@ -33,13 +28,11 @@ class TranslatorTest extends FlatSpec with Matchers {
 
   it should "reemplazar valores de una lista" in {
     runTranslateTest("list")
-
   }
 
-  it should "reemplazar valores de los objetos dentro de una lista" in {
-    pending
+  it should "reemplazar valores cuando el valor de entrada es una lista" in {
+    runTranslateTest("inputList")
   }
-
 
   def runTranslateTest(testCaseName: String) = {
 
@@ -48,10 +41,15 @@ class TranslatorTest extends FlatSpec with Matchers {
 
     val input = testUnit.get("input")
     val spec = testUnit.get("spec")
+    val map = testUnit.get("translations")
     val expected = testUnit.get("expected")
 
+    val translator = new TranslatorImpl(spec)
 
-    val translator = new Translator(spec)
+    if (map != null) {
+      translator.setHomologaciones(map.asInstanceOf[java.util.Map[String, java.util.Map[String, String]]])
+    }
+
     val actual = translator.transform(input)
 
     JsonUtils.toJsonString(actual) shouldBe JsonUtils.toJsonString(expected)

@@ -54,7 +54,7 @@ public class ArrayKey extends Key {
     }
 
     @Override
-    protected void applyChild( Object container, Map<String, Map<String, String>> homologaciones ) {
+    protected void applyChild( Object container, Map<String, Map<String, String>> translations ) {
 
         if ( container instanceof List ) {
             @SuppressWarnings( "unchecked" )
@@ -62,14 +62,14 @@ public class ArrayKey extends Key {
 
             // Find all defaultee keys that match the childKey spec.  Simple for Literal keys, more work for * and |.
             for ( Integer literalKey : determineMatchingContainerKeys( defaultList ) ) {
-                applyLiteralKeyToContainer( literalKey, defaultList, homologaciones );
+                applyLiteralKeyToContainer( literalKey, defaultList, translations );
             }
         }
         // Else there is disagreement (with respect to Array vs Map) between the data in
         //  the Container vs the Defaultr Spec type for this key.  Container wins, so do nothing.
     }
 
-    private void applyLiteralKeyToContainer( Integer literalIndex, List<Object> container, Map<String, Map<String, String>> homologaciones ) {
+    private void applyLiteralKeyToContainer( Integer literalIndex, List<Object> container, Map<String, Map<String, String>> translations ) {
 
         Object defaulteeValue = container.get( literalIndex );
 
@@ -85,7 +85,7 @@ public class ArrayKey extends Key {
             }
 
             // recurse by applying my children to this known valid container
-            applyChildren( defaulteeValue, homologaciones );
+            applyChildren( defaulteeValue, translations );
         }
     }
 

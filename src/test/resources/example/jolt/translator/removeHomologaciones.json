@@ -3,13 +3,13 @@
     "ciudad": "042"
   },
   "spec": {
-    "ciudad": "CIUDAD",
-    "_homologaciones" : {
-      "CIUDAD":
-        {
-          "042": "MEDELLIN"
-        }
+    "ciudad": "CIUDAD"
 
+  },
+
+  "translations" : {
+    "CIUDAD": {
+      "042": "MEDELLIN"
     }
   },
   "expected": {

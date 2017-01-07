@@ -6,11 +6,13 @@ import com.bazaarvoice.jolt.exception.SpecException;
 import com.bazaarvoice.jolt.exception.TransformException;
 import jolt.custom.translator.Key;
 
-import javax.inject.Inject;
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 
-public class Translator implements SpecDriven, Transform {
+public abstract class Translator implements SpecDriven, Transform, Homologador {
 
     public interface WildCards {
         String STAR = "*";
@@ -20,33 +22,15 @@ public class Translator implements SpecDriven, Transform {
 
     private final Key mapRoot;
     private final Key arrayRoot;
-    private final Map<String, Map<String, String>> homologaciones;
+    Map<String, Map<String, String>> translations;
 
     /**
      * Configure an instance of Defaultr with a spec.
      *
      * @throws SpecException for a malformed spec or if there are issues
      */
-    @Inject
     public Translator(Object spec) {
-        String HOMOLOGACIONES_KEY = "_homologaciones";
         String rootString = "root";
-
-
-        Map<String, Object> newSpec = (LinkedHashMap<String, Object>) spec;
-
-        {
-            if (newSpec.containsKey(HOMOLOGACIONES_KEY)) {
-
-                homologaciones = (Map<String, Map<String, String>>) newSpec.get(HOMOLOGACIONES_KEY);
-
-                newSpec.remove(HOMOLOGACIONES_KEY);
-
-            } else {
-                throw new TransformException("The Spec provided doesn't have " + HOMOLOGACIONES_KEY + " object.");
-            }
-        }
-
 
         // Due to defaultr's array syntax, we can't actually express that we expect the top level of the defaultee to be an array, until we see the input.
         //  Thus, in order to have parsed the spec so that we can perform many transforms, we create two specs, one where the root of the input
@@ -90,16 +74,25 @@ public class Translator implements SpecDriven, Transform {
             input = new HashMap();
         }
 
+        if ( translations == null ){
+            throw new TransformException("El mapa de traducciones no fue cargado correctamente.");
+        }
+
         // TODO : Make copy of the defaultee or like shiftr create a new output object
         if (input instanceof List) {
             if (arrayRoot == null) {
                 throw new TransformException("The Spec provided can not handle input that is a top level Json Array.");
             }
-            arrayRoot.applyChildren(input, homologaciones);
+            arrayRoot.applyChildren(input, translations);
         } else {
-            mapRoot.applyChildren(input, homologaciones);
+            mapRoot.applyChildren(input, translations);
         }
 
         return input;
     }
+
+    public void setHomologaciones(Map<String, Map<String, String>> mapa) {
+        this.translations = mapa;
+    }
+
 }

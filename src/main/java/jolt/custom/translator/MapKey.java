@@ -32,27 +32,27 @@ public class MapKey extends Key {
     }
 
     @Override
-    protected void applyChild(Object container, Map<String, Map<String, String>> homologaciones) {
+    protected void applyChild(Object container, Map<String, Map<String, String>> translations) {
 
         if (container instanceof Map) {
             Map<String, Object> defaulteeMap = (Map<String, Object>) container;
 
             // Find all defaultee keys that match the childKey spec.  Simple for Literal keys, more work for * and |.
             for (String literalKey : determineMatchingContainerKeys(defaulteeMap)) {
-                applyLiteralKeyToContainer(literalKey, defaulteeMap, homologaciones);
+                applyLiteralKeyToContainer(literalKey, defaulteeMap, translations);
             }
         }
         // Else there is disagreement (with respect to Array vs Map) between the data in
         //  the Container vs the Defaultr Spec type for this key.  Container wins, so do nothing.
     }
 
-    private void applyLiteralKeyToContainer(String literalKey, Map<String, Object> container, Map<String, Map<String, String>> homologaciones) {
+    private void applyLiteralKeyToContainer(String literalKey, Map<String, Object> container, Map<String, Map<String, String>> translations) {
 
         Object defaulteeValue = container.get(literalKey);
 
         if (children == null) {
             if (defaulteeValue != null) {
-                Map<String, String> keyHomologaciones = homologaciones.get(literalValue);
+                Map<String, String> keyHomologaciones = translations.get(literalValue);
 
                 if (defaulteeValue instanceof String) {
                     String newValue = keyHomologaciones.getOrDefault(defaulteeValue.toString(), defaulteeValue.toString());
@@ -72,7 +72,7 @@ public class MapKey extends Key {
 //            }
 
             // recurse by applying my children to this known valid container
-            applyChildren(defaulteeValue, homologaciones);
+            applyChildren(defaulteeValue, translations);
         }
     }
 

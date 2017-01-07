@@ -14,17 +14,17 @@
     "asegurado": {
       "ciudad": "CIUDAD",
       "tipo_documentos": "TIPODOCUMENTO"
+    }
+  },
+  "translations": {
+    "CIUDAD": {
+      "042": "MEDELLIN"
     },
-    "_homologaciones": {
-      "CIUDAD": {
-        "042": "MEDELLIN"
-      },
-      "TIPODOCUMENTO": {
-        "C": "cedula",
-        "TI": "tarjeta.identidad",
-        "CE": "cedula.extranjeria",
-        "RC": "registro.civil"
-      }
+    "TIPODOCUMENTO": {
+      "C": "cedula",
+      "TI": "tarjeta.identidad",
+      "CE": "cedula.extranjeria",
+      "RC": "registro.civil"
     }
   },
   "expected": {
