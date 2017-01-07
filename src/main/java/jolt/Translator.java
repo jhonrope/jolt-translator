@@ -4,7 +4,7 @@ import com.bazaarvoice.jolt.SpecDriven;
 import com.bazaarvoice.jolt.Transform;
 import com.bazaarvoice.jolt.exception.SpecException;
 import com.bazaarvoice.jolt.exception.TransformException;
-import jolt.translator.Homologador;
+import jolt.translator.Translation;
 import jolt.translator.Key;
 
 import java.util.HashMap;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public abstract class Translator implements SpecDriven, Transform, Homologador {
+public abstract class Translator implements SpecDriven, Transform, Translation {
 
     public interface WildCards {
         String STAR = "*";
@@ -32,6 +32,8 @@ public abstract class Translator implements SpecDriven, Transform, Homologador {
      */
     public Translator(Object spec) {
         String rootString = "root";
+        translations = getTranslations();
+
 
         // Due to defaultr's array syntax, we can't actually express that we expect the top level of the defaultee to be an array, until we see the input.
         //  Thus, in order to have parsed the spec so that we can perform many transforms, we create two specs, one where the root of the input
@@ -58,7 +60,6 @@ public abstract class Translator implements SpecDriven, Transform, Homologador {
             arrayRoot = tempKey;
         }
 
-
     }
 
     /**
@@ -75,7 +76,7 @@ public abstract class Translator implements SpecDriven, Transform, Homologador {
             input = new HashMap();
         }
 
-        if ( translations == null ){
+        if (translations == null) {
             throw new TransformException("El mapa de traducciones no fue cargado correctamente.");
         }
 
@@ -90,10 +91,6 @@ public abstract class Translator implements SpecDriven, Transform, Homologador {
         }
 
         return input;
-    }
-
-    public void setHomologaciones(Map<String, Map<String, String>> mapa) {
-        this.translations = mapa;
     }
 
 }

@@ -1,0 +1,38 @@
+[
+  {
+    "origen": {
+      "aplicacion": "APP1",
+      "tipo": "CIUDAD",
+      "valor": "052"
+    },
+    "destino": {
+      "aplicacion": "APP2",
+      "tipo": "CIUDAD",
+      "valor": "MEDELLIN"
+    }
+  },
+  {
+    "origen": {
+      "aplicacion": "APP1",
+      "tipo": "CIUDAD",
+      "valor": "100"
+    },
+    "destino": {
+      "aplicacion": "APP2",
+      "tipo": "CIUDAD",
+      "valor": "BOGOTA"
+    }
+  },
+  {
+    "origen": {
+      "aplicacion": "APP1",
+      "tipo": "SUCURSAL",
+      "valor": "0001"
+    },
+    "destino": {
+      "aplicacion": "APP2",
+      "tipo": "SUCURSAL",
+      "valor": "Plaza Principal"
+    }
+  }
+]

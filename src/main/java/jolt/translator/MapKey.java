@@ -16,6 +16,7 @@
 package jolt.translator;
 
 import com.bazaarvoice.jolt.common.DeepCopy;
+import com.bazaarvoice.jolt.exception.SpecException;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -52,6 +53,11 @@ public class MapKey extends Key {
 
         if (children == null) {
             if (defaulteeValue != null) {
+
+                if (! (literalValue instanceof String)) {
+                    throw new SpecException("Se requiere que el valor del lado derecho sea String.");
+                }
+
                 Map<String, String> keyHomologaciones = translations.get(literalValue);
 
                 if (defaulteeValue instanceof String) {
@@ -66,12 +72,7 @@ public class MapKey extends Key {
                 }
             }
         } else {
-//            if ( defaulteeValue != null ) {
-//                defaulteeValue = createOutputContainerObject();
-//                container.put( literalKey, defaulteeValue );  // push a new sub-container into this map
-//            }
 
-            // recurse by applying my children to this known valid container
             applyChildren(defaulteeValue, translations);
         }
     }

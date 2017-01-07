@@ -1,7 +1,9 @@
 package jolt.translator
 
+import java.util
+
 import com.bazaarvoice.jolt.JsonUtils
-import com.bazaarvoice.jolt.exception.TransformException
+import com.bazaarvoice.jolt.exception.{SpecException, TransformException}
 import org.scalatest.{FlatSpec, Matchers}
 
 
@@ -33,6 +35,22 @@ class TranslatorTest extends FlatSpec with Matchers {
     runTranslateTest("inputList")
   }
 
+  it should "continuar normalmente cuando el spec es vacio" in {
+    runTranslateTest("withoutSpec")
+  }
+
+  it should "devolver una exception cuando el spec tiene numeros" in {
+    intercept[SpecException] {
+      runTranslateTest("numberInSpec")
+    }
+  }
+
+  it should "devolver una exception cuando el spec tiene null" in {
+    intercept[SpecException] {
+      runTranslateTest("nullInSpec")
+    }
+  }
+
   def runTranslateTest(testCaseName: String) = {
 
     val testPath = "/jolt/translator/" + testCaseName
@@ -43,10 +61,16 @@ class TranslatorTest extends FlatSpec with Matchers {
     val map = testUnit.get("translations")
     val expected = testUnit.get("expected")
 
-    val translator = new TranslatorImpl(spec)
+    val translator = new TranslatorImplTest(spec) {
+      override def getTranslations(): util.Map[String, util.Map[String, String]] = {
 
-    if (map != null) {
-      translator.setHomologaciones(map.asInstanceOf[java.util.Map[String, java.util.Map[String, String]]])
+        if (map != null) {
+          map.asInstanceOf[java.util.Map[String, java.util.Map[String, String]]]
+        } else {
+          null
+        }
+
+      }
     }
 
     val actual = translator.transform(input)

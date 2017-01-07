@@ -1,0 +1,60 @@
+{
+  "input": [
+    {
+      "asegurado": {
+        "ciudad": "042",
+        "tipo_documentos": [
+          "C",
+          "TI",
+          "CE",
+          "RC"
+        ]
+      }
+    },
+    {
+      "asegurado": {
+        "ciudad": "100",
+        "tipo_documentos": [
+          "C",
+          "RC"
+        ]
+      }
+    }
+  ],
+  "spec": {
+  },
+  "translations": {
+    "CIUDAD": {
+      "042": "MEDELLIN",
+      "100": "BOGOTA"
+    },
+    "TIPODOCUMENTO": {
+      "C": "cedula",
+      "TI": "tarjeta.identidad",
+      "CE": "cedula.extranjeria",
+      "RC": "registro.civil"
+    }
+  },
+  "expected": [
+    {
+      "asegurado": {
+        "ciudad": "042",
+        "tipo_documentos": [
+          "C",
+          "TI",
+          "CE",
+          "RC"
+        ]
+      }
+    },
+    {
+      "asegurado": {
+        "ciudad": "100",
+        "tipo_documentos": [
+          "C",
+          "RC"
+        ]
+      }
+    }
+  ]
+}

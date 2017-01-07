@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import java.util.Map;
 
 
-public class TranslatorImpl extends Translator {
+public class TranslatorImplTest extends Translator {
 
     /**
      * Configure an instance of Translator with a spec.
@@ -15,12 +15,12 @@ public class TranslatorImpl extends Translator {
      * @throws SpecException for a malformed spec or if there are issues
      */
     @Inject
-    public TranslatorImpl(Object spec) {
+    public TranslatorImplTest(Object spec) {
         super(spec);
     }
 
     @Override
-    public Map<String, Map<String, String>> obtenerHomologaciones(String appOrigen, String appDestino) {
+    public Map<String, Map<String, String>> getTranslations() {
         return null;
     }
 
