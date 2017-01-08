@@ -19,7 +19,7 @@ object TranslateUtils {
   def parse(translationsJson: String): util.Map[String, util.Map[String, String]] = {
     val lista: util.List[AnyRef] = JsonUtils.jsonToList(translationsJson)
 
-    val listTraduccion = lista.map { case m: util.Map[String, AnyRef] =>
+    val listTraduccion = lista.map { case m: util.Map[AnyRef, AnyRef] =>
       val origen = asMap(m.get("origen"))
       val destino = asMap(m.get("destino"))
 

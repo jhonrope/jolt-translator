@@ -1,0 +1,86 @@
+[
+  {
+    "origen": {
+      "aplicacion": "APP1",
+      "tipo": "CIUDAD",
+      "valor": "042"
+    },
+    "destino": {
+      "aplicacion": "APP2",
+      "tipo": "CIUDAD",
+      "valor": "MEDELLIN"
+    }
+  },
+  {
+    "origen": {
+      "aplicacion": "APP1",
+      "tipo": "CIUDAD",
+      "valor": "100"
+    },
+    "destino": {
+      "aplicacion": "APP2",
+      "tipo": "CIUDAD",
+      "valor": "BOGOTA"
+    }
+  },
+  {
+    "origen": {
+      "aplicacion": "APP1",
+      "tipo": "SUCURSAL",
+      "valor": "0001"
+    },
+    "destino": {
+      "aplicacion": "APP2",
+      "tipo": "SUCURSAL",
+      "valor": "Plaza Principal"
+    }
+  },
+  {
+    "origen": {
+      "aplicacion": "APP1",
+      "tipo": "TIPODOCUMENTO",
+      "valor": "RC"
+    },
+    "destino": {
+      "aplicacion": "APP2",
+      "tipo": "TIPODOCUMENTO",
+      "valor": "registro.civil"
+    }
+  },
+  {
+    "origen": {
+      "aplicacion": "APP1",
+      "tipo": "TIPODOCUMENTO",
+      "valor": "C"
+    },
+    "destino": {
+      "aplicacion": "APP2",
+      "tipo": "TIPODOCUMENTO",
+      "valor": "cedula"
+    }
+  },
+  {
+    "origen": {
+      "aplicacion": "APP1",
+      "tipo": "TIPODOCUMENTO",
+      "valor": "TI"
+    },
+    "destino": {
+      "aplicacion": "APP2",
+      "tipo": "TIPODOCUMENTO",
+      "valor": "tarjeta.identidad"
+    }
+  },
+  {
+    "origen": {
+      "aplicacion": "APP1",
+      "tipo": "TIPODOCUMENTO",
+      "valor": "CE"
+    },
+    "destino": {
+      "aplicacion": "APP2",
+      "tipo": "TIPODOCUMENTO",
+      "valor": "cedula.extranjeria"
+    }
+  }
+]
